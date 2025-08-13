@@ -1,21 +1,33 @@
 {
-  "name": "hello-world",
-  "version": "1.2.0",
-  "description": "alexa utility for quickly building skills",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Amazon Alexa",
-  "license": "Apache License",
   "dependencies": {
     "ask-sdk": "^2.14.0",
     "ask-sdk-core": "^2.7.0",
     "ask-sdk-local-debug": "^1.1.0",
     "ask-sdk-model": "^1.19.0",
     "aws-sdk": "^2.326.0",
+    "dotenv": "^17.2.1",
     "fuse.js": "^7.0.0",
-    "sync-request": "6.1.0",
+    "luxon": "^3.7.1",
     "xml2js": "^0.6.2"
-  }
+  },
+  "description": "alexa utility for quickly building skills",
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^24.2.1",
+    "eslint": "^9.33.0",
+    "globals": "^16.3.0",
+    "jiti": "^2.5.1",
+    "prettier": "3.6.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0"
+  },
+  "license": "Apache License",
+  "main": "index.js",
+  "name": "hello-world",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.2.0"
 }
