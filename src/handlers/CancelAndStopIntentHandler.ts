@@ -1,8 +1,11 @@
 import * as Alexa from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { closeUserPlaySession } from "../ABSFunctions";
-import { PlaybackAttributes } from "../globals";
-import { calcBookTimeFromTrackAndOffset, sanitizeForSSML } from "../helpers";
+import { closeUserPlaySession } from "../abs/ABSFunctions";
+import { PlaybackAttributes } from "../utils/globals";
+import {
+  calcBookTimeFromTrackAndOffset,
+  sanitizeForSSML,
+} from "../utils/helpers";
 
 /**
  * Handles "Cancel" and "Stop", but notably not "Exit" or "Quit", which are handled by SessionEndedHandler

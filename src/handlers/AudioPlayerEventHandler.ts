@@ -1,13 +1,16 @@
 import * as Alexa from "ask-sdk-core";
 import { interfaces, Response } from "ask-sdk-model";
-import { closeUserPlaySession, updateUserPlaySession } from "../ABSFunctions";
-import { PlaybackAttributes } from "../globals";
+import {
+  closeUserPlaySession,
+  updateUserPlaySession,
+} from "../abs/ABSFunctions";
+import { PlaybackAttributes } from "../utils/globals";
 import {
   calcBookTimeFromTrackAndOffset,
   getCurrentChapterByBookTime,
   getPlaybackMetadata,
   getPlayURL,
-} from "../helpers";
+} from "../utils/helpers";
 
 /* *
  * AudioPlayer events can be triggered when users interact with your audio playback, such as stopping and

@@ -1,9 +1,9 @@
 import * as Alexa from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
 import { Duration } from "luxon";
-import { updateUserPlaySession } from "../ABSFunctions";
-import { PlaybackAttributes } from "../globals";
-import { getCurrentBookTime } from "../helpers";
+import { updateUserPlaySession } from "../abs/ABSFunctions";
+import { PlaybackAttributes } from "../utils/globals";
+import { getCurrentBookTime } from "../utils/helpers";
 import { buildResponseForAudioPlayer } from "./PlayAudioIntentHandler";
 
 export const ChangeXTimeHandler = {

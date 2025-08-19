@@ -1,6 +1,6 @@
 import * as Alexa from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { sanitizeForSSML } from "../helpers";
+import { sanitizeForSSML } from "../utils/helpers";
 /**
  * Intent handler for built-in intents that aren't supported in this skill.
  * Regardless, the skill needs to handle this gracefully, which is why this handler exists.

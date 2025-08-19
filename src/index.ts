@@ -1,10 +1,9 @@
+import { SkillBuilders } from "ask-sdk-core";
 import {
   DynamoDbPersistenceAdapter,
   PartitionKeyGenerators,
-  SkillBuilders,
-} from "ask-sdk";
+} from "ask-sdk-dynamodb-persistence-adapter";
 import { RequestEnvelope } from "ask-sdk-model";
-import "dotenv/config";
 import { AudioPlayerEventHandler } from "./handlers/AudioPlayerEventHandler";
 import { CancelAndStopIntentHandler } from "./handlers/CancelAndStopIntentHandler";
 import { ChangeXTimeHandler } from "./handlers/ChangeXTimeHandler";
@@ -15,20 +14,20 @@ import { LaunchRequestHandler } from "./handlers/LaunchRequestHandler";
 import { NextIntentHandler } from "./handlers/NextIntentHandler";
 import { PauseAudioIntentHandler } from "./handlers/PauseAudioIntentHandler";
 import { PlayAudioIntentHandler } from "./handlers/PlayAudioIntentHandler";
-import { PlaybackBookHandler } from "./handlers/PlaybackBookHandler";
 import { PlaybackControllerHandler } from "./handlers/PlaybackControllerHandler";
+import { PlayBookHandler } from "./handlers/PlayBookHandler";
 import { PreviousIntentHandler } from "./handlers/PreviousIntentHandler";
 import { SessionEndedRequestHandler } from "./handlers/SessionEndedRequestHandler";
 import { SystemExceptionHandler } from "./handlers/SystemExceptionHandler";
 import { UnsupportedAudioIntentHandler } from "./handlers/UnsupportedAudioIntentHandler";
-import { PersistentAttributeResponseInterceptor } from "./Interceptors/PersistentAttributeResponseInterceptor";
+import { PersistentAttributeResponseInterceptor } from "./interceptors/PersistentAttributeResponseInterceptor";
 
 //const app = express();
 export const handler = SkillBuilders.custom()
   .addRequestHandlers(
     LaunchRequestHandler,
     PlayAudioIntentHandler,
-    PlaybackBookHandler,
+    PlayBookHandler,
     PauseAudioIntentHandler,
     PreviousIntentHandler,
     NextIntentHandler,

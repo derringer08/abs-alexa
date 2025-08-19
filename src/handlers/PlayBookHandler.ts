@@ -6,22 +6,21 @@ import {
   getAuthor,
   getLibraryFilterData,
   searchFor,
-} from "../ABSFunctions";
+} from "../abs/ABSFunctions";
 import {
   AuthorMinified,
   LibraryItemExpanded,
   LibraryItemMinified,
-} from "../ABSInterfaces";
-import { sanitizeForSSML } from "../helpers";
+} from "../abs/ABSInterfaces";
+import { sanitizeForSSML } from "../utils/helpers";
 import { buildResponseForAudioPlayer } from "./PlayAudioIntentHandler";
 
-export const PlaybackBookHandler = {
+export const PlayBookHandler = {
   // this handler is not currently used (has limitations)
   canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) ===
-        "AMAZON.PlaybackAction<object@Book>"
+      Alexa.getIntentName(handlerInput.requestEnvelope) === "PlayBookIntent"
     );
   },
   async handle(handlerInput: Alexa.HandlerInput) {

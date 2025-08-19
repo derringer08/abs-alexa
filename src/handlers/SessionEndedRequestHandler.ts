@@ -1,8 +1,8 @@
 import * as Alexa from "ask-sdk-core";
 import { Response, SessionEndedRequest } from "ask-sdk-model";
-import { closeUserPlaySession } from "../ABSFunctions";
-import { PlaybackAttributes } from "../globals";
-import { getCurrentBookTime } from "../helpers";
+import { closeUserPlaySession } from "../abs/ABSFunctions";
+import { PlaybackAttributes } from "../utils/globals";
+import { getCurrentBookTime } from "../utils/helpers";
 
 export const SessionEndedRequestHandler: Alexa.RequestHandler = {
   canHandle(handlerInput) {

@@ -5,16 +5,16 @@ import {
   getLastPlayedLibraryItem,
   startUserPlaySession,
   updateUserPlaySession,
-} from "../ABSFunctions";
-import { LibraryItem, PlaybackSessionExpanded } from "../ABSInterfaces";
-import { PlaybackAttributes } from "../globals";
+} from "../abs/ABSFunctions";
+import { LibraryItem, PlaybackSessionExpanded } from "../abs/ABSInterfaces";
+import { PlaybackAttributes } from "../utils/globals";
 import {
   getCurrentChapterByBookTime,
   getPlaybackMetadata,
   getPlayURL,
   getTrackAndOffsetInfoByBookTime,
   sanitizeForSSML,
-} from "../helpers";
+} from "../utils/helpers";
 
 export const PlayAudioIntentHandler: Alexa.RequestHandler = {
   canHandle(handlerInput: Alexa.HandlerInput) {

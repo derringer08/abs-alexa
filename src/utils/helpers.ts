@@ -1,13 +1,12 @@
 import { interfaces } from "ask-sdk-model";
-import { getCoverUrl } from "./ABSFunctions";
+import { getCoverUrl } from "../abs/ABSFunctions";
 import {
   AudioTrack,
   BookChapter,
   PlaybackSession,
   PlaybackSessionExpanded,
-} from "./ABSInterfaces";
-import { ABS_API_KEY, SERVER_URL } from "./config";
-import { BACKGROUND_URL } from "./globals";
+} from "../abs/ABSInterfaces";
+import { ABS_API_KEY, BACKGROUND_URL, SERVER_URL } from "./globals";
 
 export function sanitizeForSSML(input: string): string {
   if (input) {

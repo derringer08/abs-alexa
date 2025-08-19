@@ -11,7 +11,7 @@ import {
   PlaybackSessionExpanded,
   PlayLibraryItemParameters,
 } from "./ABSInterfaces";
-import { ABS_API_KEY, SERVER_URL } from "./config";
+import { ABS_API_KEY, SERVER_URL } from "../utils/globals";
 
 const baseheaders = {
   "Content-Type": "application/json",

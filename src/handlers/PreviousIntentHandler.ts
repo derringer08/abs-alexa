@@ -1,11 +1,11 @@
 import * as Alexa from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { updateUserPlaySession } from "../ABSFunctions";
-import { PlaybackAttributes } from "../globals";
+import { updateUserPlaySession } from "../abs/ABSFunctions";
+import { PlaybackAttributes } from "../utils/globals";
 import {
   calcBookTimeFromTrackAndOffset,
   getCurrentChapterByBookTime,
-} from "../helpers";
+} from "../utils/helpers";
 import { buildResponseForAudioPlayer } from "./PlayAudioIntentHandler";
 
 /**

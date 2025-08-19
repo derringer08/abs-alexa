@@ -1,4 +1,4 @@
-import { PlaybackSessionExpanded } from "./ABSInterfaces";
+import { PlaybackSessionExpanded } from "../abs/ABSInterfaces";
 
 export interface PlaybackAttributes {
   userPlaySession: PlaybackSessionExpanded | undefined;
