@@ -180,18 +180,6 @@ export function getPlaybackMetadata(
   };
 }
 
-export function getPlayURL(
-  userPlaySession: PlaybackSessionExpanded,
-  trackIndexZeroBased: number,
-): string {
-  return (
-    SERVER_URL +
-    userPlaySession.audioTracks[trackIndexZeroBased].contentUrl +
-    "?token=" +
-    ABS_API_KEY
-  );
-}
-
-export function getPlayUrl(audioTrack: AudioTrack): string {
+export function getPlayURL(audioTrack: AudioTrack): string {
   return SERVER_URL + audioTrack.contentUrl + "?token=" + ABS_API_KEY;
 }

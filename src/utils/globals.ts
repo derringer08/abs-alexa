@@ -10,4 +10,4 @@ export const BACKGROUND_URL =
 
 export const ABS_API_KEY = process.env.ABS_API_KEY;
 export const SERVER_URL = process.env.SERVER_URL;
-export const USER_AGENT = process.env.USER_AGENT;
+export const USER_AGENT = process.env.USER_AGENT || "ABSAlexa";
