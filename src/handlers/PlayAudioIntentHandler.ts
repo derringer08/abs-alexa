@@ -138,5 +138,6 @@ export async function buildResponseForAudioPlayer(
       undefined, // expected previous token (don't include if playBehavior is REPLACE)
       getPlaybackMetadata(chapterTitle, userPlaySession),
     )
+    .withShouldEndSession(true)
     .getResponse();
 }
