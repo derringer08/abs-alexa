@@ -1,19 +1,24 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "target": "ES2022",
-    "jsx": "react-jsx",
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
+    "module": "nodenext",
+    "target": "es2022",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "strict": true,
     "sourceMap": true,
     "pretty": true,
     "noImplicitAny": true,
-    "types": ["node"]
+    "types": ["node"],
+    "allowJs": false,
+    "lib": ["ES2022"],
+    "skipLibCheck": true,
+    "rootDir": "src",
+    "outDir": "lambda"
   },
-  "exclude": ["node_modules", "**/node_modules/*"],
-  "include": [
-    "**/*ts",
-    "**/*js"
-  ]
+  "ts-node": {
+    "transpileOnly": true, // faster debug start
+    "esm": true
+  },
+  "exclude": ["node_modules", "lambda"],
+  "include": ["src/**/*.ts", "src/**/*.mts"]
 }
