@@ -9,6 +9,7 @@ import {
 } from "../abs/ABSFunctions";
 import {
   AuthorMinified,
+  Library,
   LibraryItemExpanded,
   LibraryItemMinified,
 } from "../abs/ABSInterfaces";
@@ -36,7 +37,7 @@ export const PlayBookHandler = {
 
     const bookSlotValue = Alexa.getSlotValueV2(
       requestEnvelope,
-      "object.name",
+      "title",
     ) as SimpleSlotValue;
     const bookTitleRaw = bookSlotValue?.value;
     const bookTitleAmazon =
@@ -45,7 +46,7 @@ export const PlayBookHandler = {
 
     const authorSlotValue = Alexa.getSlotValueV2(
       requestEnvelope,
-      "object.author.name",
+      "author",
     ) as SimpleSlotValue;
     const authorNameRaw = authorSlotValue?.value;
     const authorNameAmazon =
@@ -67,10 +68,10 @@ export const PlayBookHandler = {
 
     const allLibraries = await getAllLibraries();
     const bookLibraries = allLibraries.filter(
-      (library) => library.mediaType === "book",
+      (library: Library) => library.mediaType === "book",
     );
     const audiobooksOnlyLibraries = bookLibraries.filter(
-      (library) => library.settings.audiobooksOnly,
+      (library: Library) => library.settings.audiobooksOnly,
     );
     const bookLibraryIDs = audiobooksOnlyLibraries.map((library) => library.id);
 
