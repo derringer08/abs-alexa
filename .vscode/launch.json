@@ -19,11 +19,11 @@
         "--handlerName",
         "handler",
         "--skillEntryFile",
-        "${workspaceFolder}/lambda/index.ts",
+        "${workspaceFolder}/src/index.ts",
         "--region",
         "NA"
       ],
-      "cwd": "${workspaceFolder}/lambda"
+      "cwd": "${workspaceFolder}"
     },
     {
       "type": "node",
