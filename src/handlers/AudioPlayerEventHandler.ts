@@ -180,15 +180,22 @@ export const AudioPlayerEventHandler: Alexa.RequestHandler = {
               handlerInput.requestEnvelope,
             );
           console.log("Playback Failed : %j", request.error);
+          offsetInMilliseconds = request.currentPlaybackState?.offsetInMilliseconds;
+          amazonToken = request.token;
+          if (userPlaySession && offsetInMilliseconds && amazonToken) {
+            currentBookTime = calcBookTimeFromTrackAndOffset(
+              userPlaySession,
+              offsetInMilliseconds,
+              amazonToken,
+            );}
           if (!userPlaySession || currentBookTime === undefined) {
             console.log(
               "PlaybackFailed, but userPlaySession or currentBookTime was undefined, so could not sync or close ABS play session.",
             );
-            attributes.userPlaySession = undefined;
           } else {
-            void closeUserPlaySession(userPlaySession, currentBookTime);
-            attributes.userPlaySession = undefined;
+            void closeUserPlaySession(userPlaySession, currentBookTime); 
           }
+          attributes.userPlaySession = undefined;
           break;
         }
         default:
