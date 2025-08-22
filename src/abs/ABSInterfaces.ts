@@ -650,3 +650,63 @@ export interface AudioTrack {
   /** Metadata for the audio file, or null if not available. */
   metadata: FileMetadata | null;
 }
+
+// ==================== User Interfaces ====================
+export interface User {
+  /** The ID of the user. Only the root user has the root ID. */
+  id: string;
+  /** The username of the user. */
+  username: string;
+  /** The type of the user. Will be root, guest, user, or admin. */
+  type: "root" | "guest" | "user" | "admin";
+  /** The authentication token of the user. */
+  token: string;
+  /** The user's media progress. */
+  mediaProgress: MediaProgress[];
+  /** IDs of series to hide from the user's "Continue Series" shelf. */
+  seriesHideFromContinueListening: string[];
+  /** The user's bookmarks. */
+  bookmarks: AudioBookmark[];
+  /** Whether the user's account is active. */
+  isActive: boolean;
+  /** Whether the user is locked. */
+  isLocked: boolean;
+  /** The time (in ms since POSIX epoch) when the user was last seen by the server. Will be null if the user has never logged in. */
+  lastSeen: number | null;
+  /** The time (in ms since POSIX epoch) when the user was created. */
+  createdAt: number;
+  /** The user's permissions. */
+  permissions: UserPermissions;
+  /** The IDs of libraries accessible to the user. An empty array means all libraries are accessible. */
+  librariesAccessible: string[];
+  /** The tags accessible to the user. An empty array means all tags are accessible. */
+  itemTagsAccessible: string[];
+}
+
+export interface AudioBookmark {
+  /** The ID of the library item the bookmark is for. */
+  libraryItemId: string;
+  /** The title of the bookmark. */
+  title: string;
+  /** The time (in seconds) the bookmark is at in the book. */
+  time: number;
+  /** The time (in ms since POSIX epoch) when the bookmark was created. */
+  createdAt: number;
+}
+
+export interface UserPermissions {
+  /** Whether the user can download items to the server. */
+  download: boolean;
+  /** Whether the user can update library items. */
+  update: boolean;
+  /** Whether the user can delete library items. */
+  delete: boolean;
+  /** Whether the user can upload items to the server. */
+  upload: boolean;
+  /** Whether the user can access all libraries. */
+  accessAllLibraries: boolean;
+  /** Whether the user can access all tags. */
+  accessAllTags: boolean;
+  /** Whether the user can access explicit content. */
+  accessExplicitContent: boolean;
+}

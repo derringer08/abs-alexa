@@ -11,6 +11,7 @@ import {
   PlaybackSession,
   PlaybackSessionExpanded,
   PlayLibraryItemParameters,
+  User,
 } from "./ABSInterfaces";
 
 const baseheaders = {
@@ -19,6 +20,50 @@ const baseheaders = {
   "User-Agent": USER_AGENT,
 };
 
+/**
+ * Does a login API call to get an access token. We'll do this for every track since lambda containers don't stay up
+ * all that long, and it's not worth persisting the token. For small usage, logins are cheap and we shouldn't hit rate-limit
+ * issues.
+ *
+ * For right now just using this for AudioPlayer playback directives since you have to put the token in the URL. Could build JWT
+ * logins and refresh tokens into all API calls if we want to get fancy.
+ */
+export async function getPlaybackToken(): Promise<string> {
+  const res = await fetch(`${SERVER_URL}/login`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      username: process.env.ABS_USERNAME,
+      password: process.env.ABS_PASSWORD,
+    }),
+  });
+
+  if (!res.ok) {
+    let submessage = "";
+    if (res.status === 401) {
+      submessage = ": Invalid username or password.";
+    }
+    throw new ABSError(
+      `ABS API Error: ${res.status} ${res.statusText} ${submessage}`,
+      res.status,
+    );
+  }
+  const data = (await res.json()) as {
+    user: User;
+    userDefaultLibraryId: string;
+    serverSettings: object;
+    Source: string;
+  };
+
+  const token = data?.user?.token;
+  if (!token) {
+    throw new Error("Login response missing token.");
+  }
+
+  return token;
+}
 
 class ABSError extends Error {
   statusCode: number;
